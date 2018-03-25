@@ -196,7 +196,81 @@ public class Janela extends javax.swing.JDialog {
             
             this.saida.setText(saida);
         } else { //SUBTRAÇÃO
-            System.out.println("SUBTRAÇÃO");
+            String primeiro = valor1.getText();
+            String segundo = valor2.getText();
+            String saida = "";
+
+            int comp1 = primeiro.length() - 1;
+            int comp2 = segundo.length() - 1;
+            if (comp1 != comp2) {
+                int acres = 0;
+                if (comp1 > comp2) {
+                    acres = comp1 - comp2;
+                    for (int j = 0; j < acres; j++) {
+                        segundo = '0' + segundo;
+                    }
+                } else if (comp1 < comp2) {
+                    acres = comp2 - comp1;
+                    for (int j = 0; j < acres; j++) {
+                        primeiro = '0' + primeiro;
+                    }
+                }
+            }
+
+            comp1 = primeiro.length() - 1;
+            comp2 = segundo.length() - 1;
+            
+            System.out.println("xaniana " +primeiro);
+            System.out.println(segundo);
+
+            for (int i = comp1; i >= 0; i--) {
+                System.out.println("xaniana " +primeiro);
+                System.out.println("xanianc " +segundo);
+                System.out.println("xaniand " +saida);
+                if(i == 0){
+                    if((primeiro.charAt(i) == '1') && (segundo.charAt(i) == '1')){
+                        saida = '0' + saida;
+                        continue;
+                    }
+                }
+                
+                if((primeiro.charAt(i) == '2')){
+                    char[] aux = primeiro.toCharArray();
+                        if(primeiro.charAt(i-1) == '0'){
+                            aux[i-1] = '1';
+                        }else if(primeiro.charAt(i-1) == '1'){
+                            aux[i-1] = '2';
+                        }
+                        aux[i] = '1';
+                        primeiro = String.valueOf(aux);
+                        if(segundo.charAt(i) == '1'){
+                            saida = '1' + saida;
+                        }else{
+                            saida = '0' + saida;
+                        }
+                        continue;
+                }
+                
+                if ((primeiro.charAt(i) == '1') && (segundo.charAt(i) == '1')) {
+                        saida = '0' + saida;
+                    } else if ((primeiro.charAt(i) == '1') && (segundo.charAt(i) == '0')) {
+                        saida = '1' + saida;
+                    } else if ((primeiro.charAt(i) == '0') && (segundo.charAt(i) == '1')) {
+                        char[] aux = primeiro.toCharArray();
+                        if(primeiro.charAt(i-1) == '0'){
+                            aux[i-1] = '1';
+                        }else if(primeiro.charAt(i-1) == '1'){
+                            aux[i-1] = '2';
+                        }
+                        primeiro = String.valueOf(aux); 
+                                      
+                        saida = '1' + saida;
+                    } else if ((primeiro.charAt(i) == '0') && (segundo.charAt(i) == '0')) {
+                        saida = '0' + saida;
+                    }
+            }
+            
+            this.saida.setText(saida);
         }
     }
 
