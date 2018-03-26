@@ -196,6 +196,7 @@ public class Janela extends javax.swing.JDialog {
             
             this.saida.setText(saida);
         } else { //SUBTRAÇÃO
+            //não consegui fazer subtração
             String primeiro = valor1.getText();
             String segundo = valor2.getText();
             String saida = "";
@@ -219,14 +220,9 @@ public class Janela extends javax.swing.JDialog {
 
             comp1 = primeiro.length() - 1;
             comp2 = segundo.length() - 1;
-            
-            System.out.println("xaniana " +primeiro);
-            System.out.println(segundo);
 
             for (int i = comp1; i >= 0; i--) {
-                System.out.println("xaniana " +primeiro);
-                System.out.println("xanianc " +segundo);
-                System.out.println("xaniand " +saida);
+                
                 if(i == 0){
                     if((primeiro.charAt(i) == '1') && (segundo.charAt(i) == '1')){
                         saida = '0' + saida;
@@ -268,6 +264,8 @@ public class Janela extends javax.swing.JDialog {
                     } else if ((primeiro.charAt(i) == '0') && (segundo.charAt(i) == '0')) {
                         saida = '0' + saida;
                     }
+                
+         
             }
             
             this.saida.setText(saida);
